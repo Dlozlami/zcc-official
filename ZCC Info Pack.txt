@@ -1,0 +1,25 @@
+ZCC Info Pack
+===============================
+Official colours:
+black = #000000
+blue = #3d52c8
+red = #E7453D
+
+on white paper
+
+Flat design style, use icons please
+The logo must be in a circle 
+------------------
+
+Please make a gorgoues, reverent flyer [html+css] for my church the: Zulu Congregational Church [ZCC] Vryheid Branch. 
+
+join us
+Good Friday
+A Sacred Day of Reflection & Prayer
+Fri, 03 Apr 2026 |  9am to 10pm
+
+bible verse: __John 3:16__: "For God so loved the world, that he gave his only Son, that whoever believes in him should not perish but have eternal life." 
+
+I also included a cut out of the priest in the rev.png image which you can place in a nice dynamic way and the logo of the church is zccLogo.png. The other two images are of the church members photos [members00.jpeg,memebers01.jpeg] showing the church at the back and rows or people waering uniform. make some nice. i will print the html version unless you can make pdf directly
+
+i will put the html in the same folder as the images

@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZCC Vryheid Branch - Good Friday Flyer</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* CSS VARIABLES */
+      :root {
+        --zcc-blue: #3d52c8;
+        --zcc-red: #e7453d;
+        --zcc-black: #000000;
+        --bg-gray: #f8f9fa;
+        --white: #ffffff;
+        --lime-yellow: #dfff00;
+      }
+
+      /* BASE STYLES */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: var(--bg-gray);
+        color: var(--zcc-black);
+        line-height: 1.5;
+      }
+
+      .serif {
+        font-family: "Playfair Display", serif;
+      }
+
+      /* LAYOUT CONTAINER */
+      .flyer-container {
+        max-width: 800px;
+        margin: 20px auto;
+        background: var(--white);
+        box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+        border-top: 8px solid var(--zcc-blue);
+      }
+
+      /* HEADER */
+      header {
+        position: relative;
+        z-index: 10;
+        padding: 2rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+      }
+
+      .logo-section {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .logo-circle {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 4px solid var(--white);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        object-fit: cover;
+        background: var(--white);
+      }
+
+      /* CALVARY HEADER CIRCLE */
+      .calvary-circle {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 4px solid var(--white);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        background-color: var(--zcc-red);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+
+      .header-text h2 {
+        font-size: 0.875rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--zcc-blue);
+        margin-bottom: 0.25rem;
+      }
+
+      .header-text h1 {
+        font-size: 1.875rem;
+        font-weight: 800;
+        line-height: 1.2;
+      }
+
+      .header-text h1 span {
+        color: var(--zcc-blue);
+      }
+
+      .header-text p {
+        font-size: 1.125rem;
+        font-weight: 500;
+        color: #4b5563;
+      }
+
+      .badge-section {
+        display: none;
+      }
+
+      @media (min-width: 768px) {
+        .badge-section {
+          display: block;
+          text-align: right;
+        }
+      }
+
+      /* HERO SECTION */
+      .hero {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-height: 480px;
+      }
+
+      @media (min-width: 768px) {
+        .hero {
+          flex-direction: row;
+          align-items: stretch;
+        }
+      }
+
+      .diagonal-bg {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 100%;
+        background: var(--zcc-blue);
+        clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+        z-index: 0;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+
+      @media (min-width: 768px) {
+        .diagonal-bg {
+          display: block;
+        }
+      }
+
+      .hero-content {
+        flex: 1.2;
+        padding: 2rem;
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .hero-title h3 {
+        color: var(--zcc-red);
+        font-weight: 900;
+        font-size: 3.5rem;
+        text-transform: uppercase;
+        letter-spacing: -0.05em;
+        line-height: 1;
+      }
+
+      .hero-title p {
+        font-size: 1.25rem;
+        color: #374151;
+        margin-top: 0.5rem;
+      }
+
+      .event-details {
+        margin-top: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .detail-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .icon-box {
+        background-color: var(--zcc-blue);
+        padding: 0.6rem;
+        border-radius: 0.5rem;
+        color: var(--white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+
+      .detail-text p:first-child {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        color: #6b7280;
+        font-weight: 700;
+      }
+
+      .detail-text p:last-child {
+        font-size: 1.15rem;
+        font-weight: 700;
+      }
+
+      /* EMBEDDED SCRIPTURE */
+      .embedded-scripture {
+        margin-top: 2rem;
+        padding: 1rem;
+        border-left: 3px solid var(--zcc-red);
+        background: rgba(231, 69, 61, 0.04);
+        max-width: 95%;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+
+      .verse-text {
+        font-size: 1rem;
+        line-height: 1.4;
+        color: #1f2937;
+        font-style: italic;
+      }
+
+      .verse-ref {
+        margin-top: 0.5rem;
+        font-weight: 700;
+        font-size: 0.75rem;
+        color: var(--zcc-red);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .hero-image-area {
+        flex: 1;
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding-top: 2rem;
+      }
+
+      .mobile-blue-bg {
+        position: absolute;
+        inset: 0;
+        background-color: var(--zcc-blue);
+        z-index: 0;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+
+      @media (min-width: 768px) {
+        .hero-image-area {
+          padding-top: 0;
+        }
+        .mobile-blue-bg {
+          display: none;
+        }
+      }
+
+      .priest-image {
+        position: relative;
+        z-index: 10;
+        max-height: 480px;
+        width: auto;
+        filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
+      }
+
+      /* COMMUNITY */
+      .community {
+        padding: 2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .section-header {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .accent-line {
+        height: 4px;
+        width: 48px;
+        background-color: var(--zcc-blue);
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+
+      .section-header h4 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      .photo-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      @media (min-width: 768px) {
+        .photo-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .photo-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+      }
+
+      .member-photo {
+        height: 180px;
+        width: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .photo-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+        padding: 1rem;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+
+      .photo-overlay p {
+        color: var(--white);
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
+
+      /* FOOTER */
+      footer {
+        background-color: var(--zcc-black);
+        color: var(--white);
+        padding: 2rem;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+
+      .footer-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+      }
+
+      @media (min-width: 768px) {
+        .footer-grid {
+          flex-direction: row;
+          align-items: flex-end;
+        }
+      }
+
+      .footer-left {
+        text-align: center;
+      }
+
+      @media (min-width: 768px) {
+        .footer-left {
+          text-align: left;
+        }
+      }
+
+      .footer-church-name {
+        font-size: 1.125rem;
+        font-weight: 700;
+        line-height: 1;
+      }
+
+      .address {
+        font-size: 0.875rem;
+        color: #9ca3af;
+        font-style: normal;
+        line-height: 1.25;
+        margin-top: 0.25rem;
+      }
+
+      /* CENTER ICON STYLES */
+      .footer-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* CROSSES STYLES (HEADER) */
+      .crosses-container {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        gap: 0.25rem;
+      }
+
+      .cross-side {
+        width: 18px;
+        height: 30px;
+      }
+
+      .cross-main {
+        width: 28px;
+        height: 45px;
+      }
+
+      .calvary-label {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-weight: 700;
+        margin-top: 4px;
+      }
+
+      .footer-right {
+        text-align: center;
+      }
+
+      @media (min-width: 768px) {
+        .footer-right {
+          text-align: right;
+        }
+      }
+
+      .uhlanga {
+        font-size: 0.875rem;
+        font-weight: 700;
+        color: #e5e7eb;
+        letter-spacing: 0.15em;
+      }
+
+      .copyright {
+        font-size: 10px;
+        color: #6b7280;
+        margin-top: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      /* FLOATING DOWNLOAD BUTTON */
+      .download-btn {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        background-color: var(--lime-yellow);
+        color: var(--zcc-black);
+        padding: 0.85rem 1.75rem;
+        border-radius: 9999px;
+        text-decoration: none;
+        font-weight: 800;
+        font-size: 0.9rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+        z-index: 100;
+        transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      .download-btn:hover {
+        transform: scale(1.05);
+      }
+
+      .download-btn svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      /* PRINT STYLES */
+      @media print {
+        body {
+          background: var(--white) !important;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+        .flyer-container {
+          box-shadow: none !important;
+          margin: 0 !important;
+          width: 100% !important;
+          max-width: none !important;
+          border-top: none !important;
+        }
+        .print-border {
+          border-top: 8px solid var(--zcc-blue) !important;
+        }
+        .address,
+        .copyright {
+          color: #555555 !important;
+        }
+        .icon-box {
+          background-color: var(--zcc-blue) !important;
+          color: white !important;
+        }
+        .diagonal-bg,
+        .mobile-blue-bg {
+          background-color: var(--zcc-blue) !important;
+        }
+        .calvary-circle {
+          background-color: var(--zcc-red) !important;
+          color: white !important;
+        }
+        footer {
+          background-color: black !important;
+          color: white !important;
+        }
+        .embedded-scripture {
+          background-color: rgba(231, 69, 61, 0.04) !important;
+          border-left-color: var(--zcc-red) !important;
+        }
+        .no-print {
+          display: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Floating Download Button -->
+    <a href="../../public/ZCC Vryheid Branch - Good Friday Flyer 2026.pdf" download class="download-btn no-print">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="7 10 12 15 17 10"></polyline>
+        <line x1="12" y1="15" x2="12" y2="3"></line>
+      </svg>
+      Download PDF
+    </a>
+
+    <div class="flyer-container print-border">
+      <!-- Header / Logo Section -->
+      <header>
+        <div class="logo-section">
+          <img
+            src="../../public/zccLogo.png"
+            alt="ZCC Logo"
+            class="logo-circle"
+            onerror="this.src = 'https://via.placeholder.com/150?text=ZCC+Logo'"
+          />
+          <div class="header-text">
+            <h2>Since 1896</h2>
+            <h1>Zulu Congregational <br /><span>Church</span></h1>
+            <p>Vryheid Branch</p>
+          </div>
+        </div>
+        
+        <!-- Calvary crosses in red circle balance the logo -->
+        <div class="badge-section">
+          <div class="calvary-circle">
+            <div class="crosses-container">
+              <!-- Left Cross -->
+              <svg class="cross-side" viewBox="0 0 24 24" fill="currentColor">
+                <rect x="10" y="2" width="4" height="20" />
+                <rect x="4" y="8" width="16" height="4" />
+              </svg>
+              <!-- Main Cross -->
+              <svg class="cross-main" viewBox="0 0 24 24" fill="currentColor">
+                <rect x="10" y="0" width="4" height="24" />
+                <rect x="2" y="7" width="20" height="4" />
+              </svg>
+              <!-- Right Cross -->
+              <svg class="cross-side" viewBox="0 0 24 24" fill="currentColor">
+                <rect x="10" y="2" width="4" height="20" />
+                <rect x="4" y="8" width="16" height="4" />
+              </svg>
+            </div>
+            <span class="calvary-label">Calvary</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="diagonal-bg"></div>
+
+        <div class="hero-content">
+          <div class="hero-title">
+            <h3>Good Friday</h3>
+            <p class="serif italic">A Sacred Day of Reflection & Prayer</p>
+          </div>
+
+          <div class="event-details">
+            <div class="detail-item">
+              <div class="icon-box">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+              </div>
+              <div class="detail-text">
+                <p>Date</p>
+                <p>Friday, 03 April 2026</p>
+              </div>
+            </div>
+
+            <div class="detail-item">
+              <div class="icon-box">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+              <div class="detail-text">
+                <p>Time</p>
+                <p>9:00 AM — 10:00 PM</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scripture Section -->
+          <div class="embedded-scripture">
+            <p class="verse-text serif">
+              "For God so loved the world, that he gave his only Son, that
+              whoever believes in him should not perish but have eternal life."
+            </p>
+            <p class="verse-ref">— John 3:16</p>
+          </div>
+        </div>
+
+        <div class="hero-image-area">
+          <div class="mobile-blue-bg"></div>
+          <img
+            src="../../public/rev.png"
+            alt="Reverend"
+            class="priest-image"
+            onerror="this.style.display = 'none'"
+          />
+        </div>
+      </section>
+
+      <!-- Community Section -->
+      <section class="community">
+        <div class="section-header">
+          <div class="accent-line"></div>
+          <h4>Our Church Community</h4>
+        </div>
+        <div class="photo-grid">
+          <div class="photo-card">
+            <img
+              src="../../public/members00.jpeg"
+              alt="ZCC Members"
+              class="member-photo"
+              onerror="
+                this.src =
+                  'https://via.placeholder.com/400x200?text=Church+Members+Group+1'
+              "
+            />
+            <div class="photo-overlay">
+              <p>Unity in Faith</p>
+            </div>
+          </div>
+          <div class="photo-card">
+            <img
+              src="../../public/members01.jpeg"
+              alt="ZCC Members"
+              class="member-photo"
+              onerror="
+                this.src =
+                  'https://via.placeholder.com/400x200?text=Church+Members+Group+2'
+              "
+            />
+            <div class="photo-overlay">
+              <p>ZCC Mothers Union</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer>
+        <div class="footer-grid">
+          <!-- Left: Address -->
+          <div class="footer-left">
+            <p class="footer-church-name">Zulu Congregational Church</p>
+            <address class="address">
+              1423 Thusi St, Bhekuzulu<br />
+              Vryheid, 3100<br />
+              AbaQulusi Local Municipality
+            </address>
+          </div>
+
+          <!-- Middle: Small Church Icon for balance -->
+          <div class="footer-center">
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--zcc-blue); opacity: 0.8;">
+              <path d="M3 21h18" />
+              <path d="M5 21V11l7-7 7 7v10" />
+              <path d="M9 21v-4a3 3 0 0 1 6 0v4" />
+              <path d="M12 2v2" />
+              <path d="M11 3h2" />
+            </svg>
+          </div>
+
+          <!-- Right: Branding -->
+          <div class="footer-right">
+            <p class="uhlanga">"UHLANGA"</p>
+            <p class="copyright">© 2026 ZCC Vryheid Branch</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
