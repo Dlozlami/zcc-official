@@ -17,6 +17,7 @@
         --bg-gray: #f8f9fa;
         --white: #ffffff;
         --lime-yellow: #dfff00;
+        --nav-height: 60px;
       }
 
       /* BASE STYLES */
@@ -37,7 +38,140 @@
         font-family: "Playfair Display", serif;
       }
 
-      /* LAYOUT CONTAINER */
+      /* ─────────────────────────────────────────
+         NAVBAR
+      ───────────────────────────────────────── */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: var(--nav-height);
+        background-color: var(--zcc-blue);
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 0 1.5rem;
+        z-index: 1000;
+      }
+
+      .hamburger {
+        background: none;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        padding: 6px;
+      }
+
+      .hamburger span {
+        display: block;
+        width: 26px;
+        height: 2px;
+        background-color: var(--white);
+        border-radius: 2px;
+        transition: all 0.3s ease;
+        transform-origin: center;
+      }
+
+      /* hamburger → X animation */
+      .hamburger.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+        transform: scaleX(0);
+      }
+      .hamburger.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      /* OVERLAY */
+      .nav-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+
+      .nav-overlay.open {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      /* SLIDE-OUT DRAWER */
+      .nav-drawer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 280px;
+        height: 100%;
+        background-color: var(--zcc-blue);
+        z-index: 999;
+        transform: translateX(-100%);
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+        padding-top: var(--nav-height);
+      }
+
+      .nav-drawer.open {
+        transform: translateX(0);
+      }
+
+      .nav-drawer ul {
+        list-style: none;
+        padding: 1.5rem 0;
+      }
+
+      .nav-drawer ul li a {
+        display: block;
+        padding: 1rem 2rem;
+        color: var(--white);
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        transition: color 0.2s ease, background 0.2s ease;
+      }
+
+      .nav-drawer ul li a:hover {
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--lime-yellow);
+      }
+
+      .nav-drawer ul li a.active {
+        color: var(--lime-yellow);
+        border-left: 3px solid var(--lime-yellow);
+      }
+
+      /* push page content below fixed navbar */
+      body {
+        padding-top: var(--nav-height);
+      }
+
+      /* ─────────────────────────────────────────
+         PRINT — hide navbar only
+      ───────────────────────────────────────── */
+      @media print {
+        .navbar,
+        .nav-drawer,
+        .nav-overlay {
+          display: none !important;
+        }
+        body {
+          padding-top: 0 !important;
+        }
+      }
+
+      /* ─────────────────────────────────────────
+         LAYOUT CONTAINER
+      ───────────────────────────────────────── */
       .flyer-container {
         max-width: 800px;
         margin: 20px auto;
@@ -76,7 +210,6 @@
         background: var(--white);
       }
 
-      /* CALVARY HEADER CIRCLE */
       .calvary-circle {
         width: 120px;
         height: 120px;
@@ -226,7 +359,6 @@
         font-weight: 700;
       }
 
-      /* EMBEDDED SCRIPTURE */
       .embedded-scripture {
         margin-top: 2rem;
         padding: 1rem;
@@ -406,14 +538,12 @@
         margin-top: 0.25rem;
       }
 
-      /* CENTER ICON STYLES */
       .footer-center {
         display: flex;
         justify-content: center;
         align-items: center;
       }
 
-      /* CROSSES STYLES (HEADER) */
       .crosses-container {
         display: flex;
         align-items: flex-end;
@@ -495,8 +625,15 @@
 
       /* PRINT STYLES */
       @media print {
+        .navbar,
+        .nav-drawer,
+        .nav-overlay,
+        .no-print {
+          display: none !important;
+        }
         body {
           background: var(--white) !important;
+          padding-top: 0 !important;
           -webkit-print-color-adjust: exact;
           print-color-adjust: exact;
         }
@@ -534,13 +671,33 @@
           background-color: rgba(231, 69, 61, 0.04) !important;
           border-left-color: var(--zcc-red) !important;
         }
-        .no-print {
-          display: none !important;
-        }
       }
     </style>
   </head>
   <body>
+
+    <!-- ─── NAVBAR ─────────────────────────────── -->
+    <nav class="navbar">
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+
+    <!-- Overlay -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- Slide-out Drawer -->
+    <div class="nav-drawer" id="navDrawer">
+      <ul>
+        <li><a href="/" >Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/events" class="active">Events</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </div>
+
     <!-- Floating Download Button -->
     <a href="ZCC Vryheid Branch - Good Friday Flyer 2026.pdf" download class="download-btn no-print">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -559,7 +716,7 @@
             src="zccLogo.png"
             alt="ZCC Logo"
             class="logo-circle"
-            onerror="this.src = 'https://via.placeholder.com/150?text=ZCC+Logo'"
+            onerror="this.src='https://via.placeholder.com/150?text=ZCC+Logo'"
           />
           <div class="header-text">
             <h2>Since 1896</h2>
@@ -567,22 +724,18 @@
             <p>Vryheid Branch</p>
           </div>
         </div>
-        
-        <!-- Calvary crosses in red circle balance the logo -->
+
         <div class="badge-section">
           <div class="calvary-circle">
             <div class="crosses-container">
-              <!-- Left Cross -->
               <svg class="cross-side" viewBox="0 0 24 24" fill="currentColor">
                 <rect x="10" y="2" width="4" height="20" />
                 <rect x="4" y="8" width="16" height="4" />
               </svg>
-              <!-- Main Cross -->
               <svg class="cross-main" viewBox="0 0 24 24" fill="currentColor">
                 <rect x="10" y="0" width="4" height="24" />
                 <rect x="2" y="7" width="20" height="4" />
               </svg>
-              <!-- Right Cross -->
               <svg class="cross-side" viewBox="0 0 24 24" fill="currentColor">
                 <rect x="10" y="2" width="4" height="20" />
                 <rect x="4" y="8" width="16" height="4" />
@@ -606,17 +759,7 @@
           <div class="event-details">
             <div class="detail-item">
               <div class="icon-box">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                   <line x1="16" y1="2" x2="16" y2="6"></line>
                   <line x1="8" y1="2" x2="8" y2="6"></line>
@@ -631,17 +774,7 @@
 
             <div class="detail-item">
               <div class="icon-box">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <circle cx="12" cy="12" r="10"></circle>
                   <polyline points="12 6 12 12 16 14"></polyline>
                 </svg>
@@ -653,7 +786,6 @@
             </div>
           </div>
 
-          <!-- Scripture Section -->
           <div class="embedded-scripture">
             <p class="verse-text serif">
               "For God so loved the world, that he gave his only Son, that
@@ -665,12 +797,7 @@
 
         <div class="hero-image-area">
           <div class="mobile-blue-bg"></div>
-          <img
-            src="rev.png"
-            alt="Reverend"
-            class="priest-image"
-            onerror="this.style.display = 'none'"
-          />
+          <img src="rev.png" alt="Reverend" class="priest-image" onerror="this.style.display='none'" />
         </div>
       </section>
 
@@ -682,29 +809,13 @@
         </div>
         <div class="photo-grid">
           <div class="photo-card">
-            <img
-              src="members00.jpeg"
-              alt="ZCC Members"
-              class="member-photo"
-              onerror="
-                this.src =
-                  'https://via.placeholder.com/400x200?text=Church+Members+Group+1'
-              "
-            />
+            <img src="members00.jpeg" alt="ZCC Members" class="member-photo" onerror="this.src='https://via.placeholder.com/400x200?text=Church+Members+Group+1'" />
             <div class="photo-overlay">
               <p>Unity in Faith</p>
             </div>
           </div>
           <div class="photo-card">
-            <img
-              src="members01.jpeg"
-              alt="ZCC Members"
-              class="member-photo"
-              onerror="
-                this.src =
-                  'https://via.placeholder.com/400x200?text=Church+Members+Group+2'
-              "
-            />
+            <img src="members01.jpeg" alt="ZCC Members" class="member-photo" onerror="this.src='https://via.placeholder.com/400x200?text=Church+Members+Group+2'" />
             <div class="photo-overlay">
               <p>ZCC Mothers Union</p>
             </div>
@@ -715,7 +826,6 @@
       <!-- Footer -->
       <footer>
         <div class="footer-grid">
-          <!-- Left: Address -->
           <div class="footer-left">
             <p class="footer-church-name">Zulu Congregational Church</p>
             <address class="address">
@@ -725,7 +835,6 @@
             </address>
           </div>
 
-          <!-- Middle: Small Church Icon for balance -->
           <div class="footer-center">
             <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--zcc-blue); opacity: 0.8;">
               <path d="M3 21h18" />
@@ -736,7 +845,6 @@
             </svg>
           </div>
 
-          <!-- Right: Branding -->
           <div class="footer-right">
             <p class="uhlanga">"UHLANGA"</p>
             <p class="copyright">© 2026 ZCC Vryheid Branch</p>
@@ -744,5 +852,38 @@
         </div>
       </footer>
     </div>
+
+    <!-- ─── NAV SCRIPT ─────────────────────────── -->
+    <script>
+      const hamburger  = document.getElementById("hamburger");
+      const navDrawer  = document.getElementById("navDrawer");
+      const navOverlay = document.getElementById("navOverlay");
+
+      function openMenu() {
+        hamburger.classList.add("open");
+        navDrawer.classList.add("open");
+        navOverlay.classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeMenu() {
+        hamburger.classList.remove("open");
+        navDrawer.classList.remove("open");
+        navOverlay.classList.remove("open");
+        document.body.style.overflow = "";
+      }
+
+      hamburger.addEventListener("click", () => {
+        navDrawer.classList.contains("open") ? closeMenu() : openMenu();
+      });
+
+      navOverlay.addEventListener("click", closeMenu);
+
+      // close on link click
+      navDrawer.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", closeMenu);
+      });
+    </script>
+
   </body>
 </html>
