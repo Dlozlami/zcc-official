@@ -5,7 +5,7 @@ const path = require("path");
 const VIEWS_DIR = path.join(__dirname, "../views");
 
 exports.home = (req, res) => {
-  res.sendFile(path.join(VIEWS_DIR, "flyer", "good-friday.html"));
+  res.sendFile(path.join(VIEWS_DIR, "index.html"));
 };
 
 exports.about = (req, res) => {
