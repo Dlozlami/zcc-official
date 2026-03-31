@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,18 +6,30 @@
     <title>ZCC Vryheid Branch</title>
 
     <!-- Open Graph / Link Previews -->
-    <meta property="og:type"        content="website" />
-    <meta property="og:site_name"   content="ZCC Vryheid Branch" />
-    <meta property="og:title"       content="ZCC Vryheid Branch" />
-    <meta property="og:description" content="Zulu Congregational Church, Vryheid Branch — Rooted in faith since 1896." />
-    <meta property="og:image"       content="https://zcc-official.vercel.app/og-image.png" />
-    <meta property="og:url"         content="https://zcc-official.vercel.app" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ZCC Vryheid Branch" />
+    <meta property="og:title" content="ZCC Vryheid Branch" />
+    <meta
+      property="og:description"
+      content="Zulu Congregational Church, Vryheid Branch — Rooted in faith since 1896."
+    />
+    <meta
+      property="og:image"
+      content="https://zcc-official.vercel.app/public/og-image.png"
+    />
+    <meta property="og:url" content="https://zcc-official.vercel.app" />
 
     <!-- WhatsApp / Twitter fallback -->
-    <meta name="twitter:card"        content="summary_large_image" />
-    <meta name="twitter:title"       content="ZCC Vryheid Branch" />
-    <meta name="twitter:description" content="Zulu Congregational Church, Vryheid Branch — Rooted in faith since 1896." />
-    <meta name="twitter:image"       content="https://zcc-official.vercel.app/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ZCC Vryheid Branch" />
+    <meta
+      name="twitter:description"
+      content="Zulu Congregational Church, Vryheid Branch — Rooted in faith since 1896."
+    />
+    <meta
+      name="twitter:image"
+      content="https://zcc-official.vercel.app/public/og-image.png"
+    />
 
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
@@ -40,19 +52,12 @@
         padding: 0;
       }
 
-      html, body {
-        height: 100%;
-      }
-
       body {
         font-family: "Inter", sans-serif;
         background-color: var(--bg-gray);
         color: var(--zcc-black);
         line-height: 1.5;
         padding-top: var(--nav-height);
-        display: flex;
-        flex-direction: column;
-        min-height: 100%;
       }
 
       .serif {
@@ -161,7 +166,9 @@
         font-weight: 600;
         letter-spacing: 0.05em;
         text-transform: uppercase;
-        transition: color 0.2s ease, background 0.2s ease;
+        transition:
+          color 0.2s ease,
+          background 0.2s ease;
       }
 
       .nav-drawer ul li a:hover {
@@ -184,8 +191,6 @@
         background: var(--white);
         box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
         border-top: 8px solid var(--zcc-blue);
-        flex: 1;
-        min-height: calc(100vh - var(--nav-height) - 40px);
       }
 
       /* ─────────────────────────────────────────
@@ -333,10 +338,14 @@
         }
       }
 
-      .footer-left { text-align: center; }
+      .footer-left {
+        text-align: center;
+      }
 
       @media (min-width: 768px) {
-        .footer-left { text-align: left; }
+        .footer-left {
+          text-align: left;
+        }
       }
 
       .footer-church-name {
@@ -359,10 +368,14 @@
         align-items: center;
       }
 
-      .footer-right { text-align: center; }
+      .footer-right {
+        text-align: center;
+      }
 
       @media (min-width: 768px) {
-        .footer-right { text-align: right; }
+        .footer-right {
+          text-align: right;
+        }
       }
 
       .uhlanga {
@@ -378,6 +391,114 @@
         margin-top: 0.5rem;
         text-transform: uppercase;
         letter-spacing: 0.05em;
+      }
+
+      /* ─────────────────────────────────────────
+         REPEATING SECTIONS
+      ───────────────────────────────────────── */
+      .content-section {
+        padding: 2rem 0;
+        display: block; /* change to "none" to hide a section */
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      .section-title {
+        font-size: 1.25rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--zcc-black);
+        margin-bottom: 1rem;
+      }
+
+      .section-body {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+      }
+
+      @media (min-width: 600px) {
+        .section-body {
+          flex-direction: row;
+          align-items: flex-start;
+          gap: 1.5rem;
+        }
+        .section-image {
+          width: 35%;
+          flex-shrink: 0;
+        }
+        .section-details {
+          flex: 1;
+          min-width: 0;
+        }
+      }
+
+      .section-image {
+        width: 100%;
+        display: block;
+        border-radius: 4px;
+      }
+
+      .section-details {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .photo-caption {
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #e5e7eb;
+      }
+
+      .caption-label {
+        font-size: 0.65rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: #9ca3af;
+        margin-bottom: 0.4rem;
+      }
+
+      .caption-names {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+      }
+
+      .caption-names li {
+        font-size: 0.85rem;
+        color: #374151;
+        font-weight: 500;
+      }
+
+      .refs {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .ref-pill {
+        display: inline-block;
+        padding: 0.35rem 0.85rem;
+        border-radius: 9999px;
+        border: 1.5px solid var(--zcc-blue);
+        color: var(--zcc-blue);
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        white-space: nowrap;
+        width: fit-content;
+        transition:
+          background 0.2s ease,
+          color 0.2s ease;
+        cursor: default;
+      }
+
+      .ref-pill:hover {
+        background-color: var(--lime-yellow);
+        border-color: var(--lime-yellow);
+        color: var(--zcc-black);
       }
 
       /* ─────────────────────────────────────────
@@ -402,7 +523,6 @@
           width: 100% !important;
           max-width: none !important;
           border-top: none !important;
-          min-height: unset !important;
         }
         .hero {
           background-color: var(--zcc-blue) !important;
@@ -419,7 +539,6 @@
     </style>
   </head>
   <body>
-
     <!-- ─── NAVBAR ─────────────────────────────── -->
     <nav class="navbar">
       <img src="/zccLogo.png" alt="ZCC Logo" class="navbar-logo" />
@@ -445,12 +564,13 @@
 
     <!-- ─── PAGE CONTAINER ────────────────────── -->
     <div class="page-container">
-
       <!-- HERO / COUNTDOWN -->
       <section class="hero">
         <p class="hero-eyebrow">Upcoming Event</p>
         <h1 class="hero-title">Join us for Good Friday</h1>
-        <p class="hero-subtitle">A sacred day of reflection, prayer and worship</p>
+        <p class="hero-subtitle">
+          03 April 2026 &nbsp;·&nbsp; 09:00 AM
+        </p>
 
         <!-- Countdown -->
         <div class="countdown" id="countdown">
@@ -476,14 +596,48 @@
         </div>
 
         <!-- Live message (shown when countdown hits zero) -->
-        <p class="live-message" id="liveMessage">Good Friday Service is happening now</p>
+        <p class="live-message" id="liveMessage">
+          Good Friday Service is happening now
+        </p>
 
         <a href="/events" class="hero-btn">View Details</a>
-        <p class="hero-date">Friday, 03 April 2026 &nbsp;·&nbsp; 09:00 AM</p>
+
       </section>
 
-      <!-- future sections go here -->
-
+      <!-- ─────────────────────────────────────
+           SECTION — Uhambo lomqamlezo
+           To hide: change style="display:block" to style="display:none"
+      ──────────────────────────────────────── -->
+      <div class="content-section" style="display: block">
+        <div class="section-body">
+          <img
+            src="/1000248700.jpg"
+            alt="Uhambo lomqamlezo"
+            style="width:60%"
+            onerror="this.style.display = 'none'"
+          />
+          <div class="section-details">
+            <h2 class="section-title">Uhambo lomqamlezo</h2>
+            <div class="photo-caption">
+              <p class="caption-label">In this photo, from the left</p>
+              <ul class="caption-names">
+                <li>Mshumayeli N Kunene</li>
+                <li>Miss L Kunene</li>
+                <li>Mshumayeli N Dumisa</li>
+                <li>Mr T Mthethwa</li>
+              </ul>
+            </div>
+            <p class="caption-label">Scripture references</p>
+            <div class="refs">
+              <span class="ref-pill">Matt 26:36–46</span>
+              <span class="ref-pill">Matt 26:59–75</span>
+              <span class="ref-pill">Matt 27:1–8</span>
+              <span class="ref-pill">Luke 23:26</span>
+              <span class="ref-pill">Luke 23:27–31</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- ─── FOOTER ────────────────────────────── -->
@@ -499,7 +653,17 @@
         </div>
 
         <div class="footer-center">
-          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--zcc-blue); opacity: 0.8;">
+          <svg
+            width="60"
+            height="60"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="color: var(--zcc-blue); opacity: 0.8"
+          >
             <path d="M3 21h18" />
             <path d="M5 21V11l7-7 7 7v10" />
             <path d="M9 21v-4a3 3 0 0 1 6 0v4" />
@@ -518,8 +682,8 @@
     <!-- ─── SCRIPTS ───────────────────────────── -->
     <script>
       // ── Nav ──────────────────────────────────
-      const hamburger  = document.getElementById("hamburger");
-      const navDrawer  = document.getElementById("navDrawer");
+      const hamburger = document.getElementById("hamburger");
+      const navDrawer = document.getElementById("navDrawer");
       const navOverlay = document.getElementById("navOverlay");
 
       function openMenu() {
@@ -541,7 +705,9 @@
       });
 
       navOverlay.addEventListener("click", closeMenu);
-      navDrawer.querySelectorAll("a").forEach(l => l.addEventListener("click", closeMenu));
+      navDrawer
+        .querySelectorAll("a")
+        .forEach((l) => l.addEventListener("click", closeMenu));
 
       // ── Countdown ────────────────────────────
       const eventDate = new Date("2026-04-03T09:00:00");
@@ -551,22 +717,24 @@
       }
 
       function tick() {
-        const now  = new Date();
+        const now = new Date();
         const diff = eventDate - now;
 
         if (diff <= 0) {
-          document.getElementById("countdown").style.display   = "none";
+          document.getElementById("countdown").style.display = "none";
           document.getElementById("liveMessage").style.display = "block";
           return;
         }
 
-        const days    = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours   = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+        );
         const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-        document.getElementById("cd-days").textContent    = pad(days);
-        document.getElementById("cd-hours").textContent   = pad(hours);
+        document.getElementById("cd-days").textContent = pad(days);
+        document.getElementById("cd-hours").textContent = pad(hours);
         document.getElementById("cd-minutes").textContent = pad(minutes);
         document.getElementById("cd-seconds").textContent = pad(seconds);
       }
@@ -574,6 +742,5 @@
       tick();
       setInterval(tick, 1000);
     </script>
-
   </body>
 </html>
