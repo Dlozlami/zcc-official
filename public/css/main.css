@@ -527,3 +527,111 @@ footer {
     color: #555555 !important;
   }
 }
+
+/* ─────────────────────────────────────────
+   PROGRAMME DIRECTOR
+───────────────────────────────────────── */
+.director-card {
+  background: #dfff00;
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  min-height: 380px;
+}
+
+.director-photo {
+  width: 45%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: #d4f000;
+}
+
+.director-img {
+  width: 100%;
+  display: block;
+  object-fit: contain;
+  object-position: bottom;
+}
+
+.director-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem 1.75rem;
+}
+
+.director-top {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.director-church {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.45);
+}
+
+.director-event {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #3d52c8;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.director-middle {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.director-role {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #e7453d;
+}
+
+.director-name {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #000000;
+  line-height: 1.1;
+}
+
+.director-divider {
+  width: 40px;
+  height: 3px;
+  background: #3d52c8;
+  margin-top: 0.25rem;
+}
+
+.director-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-left: 3px solid #e7453d;
+  padding-left: 0.75rem;
+}
+
+.director-verse {
+  font-size: 0.75rem;
+  color: rgba(0,0,0,0.7);
+  line-height: 1.55;
+  font-style: italic;
+}
+
+.director-verse-ref {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #000000;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
