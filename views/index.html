@@ -35,512 +35,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
       rel="stylesheet"
     />
-    <style>
-      :root {
-        --zcc-blue: #3d52c8;
-        --zcc-red: #e7453d;
-        --zcc-black: #000000;
-        --bg-gray: #f8f9fa;
-        --white: #ffffff;
-        --lime-yellow: #dfff00;
-        --nav-height: 60px;
-      }
-
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      body {
-        font-family: "Inter", sans-serif;
-        background-color: var(--bg-gray);
-        color: var(--zcc-black);
-        line-height: 1.5;
-        padding-top: var(--nav-height);
-      }
-
-      .serif {
-        font-family: "Playfair Display", serif;
-      }
-
-      /* ─────────────────────────────────────────
-         NAVBAR
-      ───────────────────────────────────────── */
-      .navbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: var(--nav-height);
-        background-color: var(--zcc-blue);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        z-index: 1000;
-      }
-
-      .navbar-logo {
-        height: var(--nav-height);
-        width: var(--nav-height);
-        object-fit: cover;
-        display: block;
-      }
-
-      .hamburger {
-        background: none;
-        border: none;
-        cursor: pointer;
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        padding: 4px 1.5rem 4px 4px;
-      }
-
-      .hamburger span {
-        display: block;
-        width: 26px;
-        height: 5px;
-        background-color: var(--white);
-        border-radius: 2px;
-        transition: all 0.3s ease;
-        transform-origin: center;
-      }
-
-      .hamburger.open span:nth-child(1) {
-        transform: translateY(7px) rotate(45deg);
-      }
-      .hamburger.open span:nth-child(2) {
-        opacity: 0;
-        transform: scaleX(0);
-      }
-      .hamburger.open span:nth-child(3) {
-        transform: translateY(-7px) rotate(-45deg);
-      }
-
-      .nav-overlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 998;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s ease;
-      }
-
-      .nav-overlay.open {
-        opacity: 1;
-        pointer-events: all;
-      }
-
-      .nav-drawer {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 280px;
-        height: 100%;
-        background-color: var(--zcc-blue);
-        z-index: 999;
-        transform: translateX(-100%);
-        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        display: flex;
-        flex-direction: column;
-        padding-top: var(--nav-height);
-      }
-
-      .nav-drawer.open {
-        transform: translateX(0);
-      }
-
-      .nav-drawer ul {
-        list-style: none;
-        padding: 1.5rem 0;
-      }
-
-      .nav-drawer ul li a {
-        display: block;
-        padding: 1rem 2rem;
-        color: var(--white);
-        text-decoration: none;
-        font-size: 1rem;
-        font-weight: 600;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-        transition:
-          color 0.2s ease,
-          background 0.2s ease;
-      }
-
-      .nav-drawer ul li a:hover {
-        background: rgba(255, 255, 255, 0.08);
-        color: var(--lime-yellow);
-      }
-
-      .nav-drawer ul li a.active {
-        color: var(--lime-yellow);
-        border-left: 3px solid var(--lime-yellow);
-      }
-
-      /* ─────────────────────────────────────────
-         PAGE CONTAINER
-      ───────────────────────────────────────── */
-      .page-container {
-        max-width: 800px;
-        width: 100%;
-        margin: 20px auto;
-        background: var(--white);
-        box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
-        border-top: 8px solid var(--zcc-blue);
-      }
-
-      /* ─────────────────────────────────────────
-         HERO / COUNTDOWN
-      ───────────────────────────────────────── */
-      .hero {
-        background-color: var(--zcc-blue);
-        color: var(--white);
-        padding: 3rem 2rem;
-        text-align: center;
-        print-color-adjust: exact;
-        -webkit-print-color-adjust: exact;
-      }
-
-      .hero-eyebrow {
-        font-size: 0.75rem;
-        font-weight: 700;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: var(--lime-yellow);
-        margin-bottom: 0.75rem;
-      }
-
-      .hero-title {
-        font-size: 2.25rem;
-        font-weight: 800;
-        line-height: 1.15;
-        margin-bottom: 0.5rem;
-      }
-
-      .hero-subtitle {
-        font-size: 1rem;
-        color: rgba(255, 255, 255, 0.75);
-        margin-bottom: 2.5rem;
-      }
-
-      /* countdown grid */
-      .countdown {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 2.5rem;
-        flex-wrap: nowrap;
-        padding: 1rem 0;
-      }
-
-      .countdown-unit {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .countdown-number {
-        font-size: 2rem;
-        font-weight: 800;
-        line-height: 1;
-        color: var(--white);
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 8px;
-        padding: 0.75rem 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-variant-numeric: tabular-nums;
-      }
-
-      .countdown-label {
-        font-size: 0.65rem;
-        font-weight: 700;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.6);
-        margin-top: 0.5rem;
-      }
-
-      /* separator dots */
-      .countdown-sep {
-        font-size: 2rem;
-        font-weight: 800;
-        color: rgba(255, 255, 255, 0.3);
-        align-self: center;
-        padding-bottom: 1.5rem;
-        margin: 0 1% ;
-      }
-
-      /* live message */
-      .live-message {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--lime-yellow);
-        margin-bottom: 2.5rem;
-        display: none;
-      }
-
-      /* CTA button */
-      .hero-btn {
-        display: inline-block;
-        background-color: var(--lime-yellow);
-        color: var(--zcc-black);
-        padding: 0.85rem 2rem;
-        border-radius: 9999px;
-        text-decoration: none;
-        font-weight: 800;
-        font-size: 0.9rem;
-        letter-spacing: 0.05em;
-        transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      }
-
-      .hero-btn:hover {
-        transform: scale(1.05);
-      }
-
-      /* date line below button */
-      .hero-date {
-        margin-top: 1.25rem;
-        font-size: 0.8rem;
-        color: rgba(255, 255, 255, 0.5);
-        letter-spacing: 0.05em;
-      }
-
-      /* ─────────────────────────────────────────
-         FOOTER
-      ───────────────────────────────────────── */
-      footer {
-        background-color: var(--zcc-black);
-        color: var(--white);
-        padding: 2rem;
-        print-color-adjust: exact;
-        -webkit-print-color-adjust: exact;
-      }
-
-      .footer-grid {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        gap: 2rem;
-      }
-
-      @media (min-width: 768px) {
-        .footer-grid {
-          flex-direction: row;
-          align-items: flex-end;
-        }
-      }
-
-      .footer-left {
-        text-align: center;
-      }
-
-      @media (min-width: 768px) {
-        .footer-left {
-          text-align: left;
-        }
-      }
-
-      .footer-church-name {
-        font-size: 1.125rem;
-        font-weight: 700;
-        line-height: 1;
-      }
-
-      .address {
-        font-size: 0.875rem;
-        color: #9ca3af;
-        font-style: normal;
-        line-height: 1.25;
-        margin-top: 0.25rem;
-      }
-
-      .footer-center {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .footer-right {
-        text-align: center;
-      }
-
-      @media (min-width: 768px) {
-        .footer-right {
-          text-align: right;
-        }
-      }
-
-      .uhlanga {
-        font-size: 0.875rem;
-        font-weight: 700;
-        color: #e5e7eb;
-        letter-spacing: 0.15em;
-      }
-
-      .copyright {
-        font-size: 10px;
-        color: #6b7280;
-        margin-top: 0.5rem;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-      }
-
-      /* ─────────────────────────────────────────
-   REPEATING SECTIONS
-───────────────────────────────────────── */
-      .content-section {
-        padding: 2rem 0;
-        display: block;
-        border-bottom: 1px solid #f0f0f0;
-      }
-
-      .section-title {
-        font-size: 1.25rem;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: var(--zcc-black);
-        margin-bottom: 1rem;
-      }
-
-      .section-body {
-        display: flex;
-        flex-direction: column;
-        gap: 1.25rem;
-      }
-
-      .section-image {
-        width: 100%;
-        display: block;
-        border-radius: 4px;
-      }
-
-      .section-details {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        padding: 0 2rem;
-      }
-
-      @media (min-width: 600px) {
-        .section-body {
-          flex-direction: row;
-          align-items: flex-start;
-          gap: 1.5rem;
-        }
-        .section-image {
-          width: 55%;
-          flex-shrink: 0;
-        }
-        .img-portrait {
-          width: 60%;
-        }
-        .section-details {
-          flex: 1;
-          min-width: 0;
-          padding: 0 2rem 0 0;
-        }
-      }
-
-      .photo-caption {
-        padding-bottom: 1rem;
-        border-bottom: 1px solid #e5e7eb;
-      }
-
-      .caption-label {
-        font-size: 0.65rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
-        color: #9ca3af;
-        margin-bottom: 0.4rem;
-      }
-
-      .caption-names {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 0.2rem;
-      }
-
-      .caption-names li {
-        font-size: 0.85rem;
-        color: #374151;
-        font-weight: 500;
-      }
-
-      .refs {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-      }
-
-      .ref-pill {
-        display: inline-block;
-        padding: 0.35rem 0.85rem;
-        border-radius: 9999px;
-        border: 1.5px solid var(--zcc-blue);
-        color: var(--zcc-blue);
-        font-size: 0.8rem;
-        font-weight: 600;
-        letter-spacing: 0.03em;
-        white-space: nowrap;
-        width: fit-content;
-        transition:
-          background 0.2s ease,
-          color 0.2s ease;
-        cursor: default;
-      }
-
-      .ref-pill:hover {
-        background-color: var(--lime-yellow);
-        border-color: var(--lime-yellow);
-        color: var(--zcc-black);
-      }
-
-      /* ─────────────────────────────────────────
-         PRINT
-      ───────────────────────────────────────── */
-      @media print {
-        .navbar,
-        .nav-drawer,
-        .nav-overlay,
-        .no-print {
-          display: none !important;
-        }
-        body {
-          background: var(--white) !important;
-          padding-top: 0 !important;
-          -webkit-print-color-adjust: exact;
-          print-color-adjust: exact;
-        }
-        .page-container {
-          box-shadow: none !important;
-          margin: 0 !important;
-          width: 100% !important;
-          max-width: none !important;
-          border-top: none !important;
-        }
-        .hero {
-          background-color: var(--zcc-blue) !important;
-        }
-        footer {
-          background-color: black !important;
-          color: white !important;
-        }
-        .address,
-        .copyright {
-          color: #555555 !important;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="/css/main.css" />
   </head>
   <body>
     <!-- ─── NAVBAR ─────────────────────────────── -->
@@ -636,6 +131,49 @@
               <span class="ref-pill">Matt 27:1–8</span>
               <span class="ref-pill">Luke 23:26</span>
               <span class="ref-pill">Luke 23:27–31</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─────────────────────────────────────────
+     SECTION — Amazwi ayisikhombisa
+     To hide: change style="display:block" to style="display:none"
+──────────────────────────────────────── -->
+      <div class="content-section" style="display: block">
+        <div class="section-body2">
+          <img
+            src="/1000248688.jpg"
+            alt="Amazwi ayisikhombisa"
+            class="land-image"
+            onerror="this.style.display = 'none'"
+          />
+          <div class="section-details" style="padding-left: 1.5rem;">
+            <h2 class="section-title">Amazwi ayisikhombisa</h2>
+            <div id="subDetails" style="display: flex">
+              <div class="photo-caption" style="width: 60%;">
+                <p class="caption-label">Presented by</p>
+                <ul class="caption-names">
+                  <li>Mrs P Dladla</li>
+                  <li>Mshumayeli Nene</li>
+                  <li>Capt J Makhubu</li>
+                  <li>Miss M Sithole</li>
+                  <li>Miss K Zulu</li>
+                  <li>Mrs Z Zondo</li>
+                </ul>
+              </div>
+              <div>
+                <p class="caption-label">Scripture references</p>
+                <div class="refs">
+                  <span class="ref-pill">Luke 23:34</span>
+                  <span class="ref-pill">Luke 23:39–43</span>
+                  <span class="ref-pill">John 19:26–27</span>
+                  <span class="ref-pill">Matt 27:46</span>
+                  <span class="ref-pill">John 19:28–29</span>
+                  <span class="ref-pill">John 19:30</span>
+                  <span class="ref-pill">Luke 23:45–46</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
