@@ -206,7 +206,59 @@
           </div>
         </div>
       </div>
-
+      <!-- ─────────────────────────────────────────
+     VIDEO GALLERY
+──────────────────────────────────────── -->
+      <div class="video-section">
+        <div class="video-container" id="videoContainer">
+          <video
+            id="video1"
+            src="/videos/church-singing-praise.mp4"
+            class="video-player active"
+            controls
+            playsinline
+          ></video>
+          <video
+            id="video2"
+            src="/videos/member-leads-song.mp4"
+            class="video-player"
+            controls
+            playsinline
+          ></video>
+          <div class="video-overlay">
+            <div class="video-top">
+              <span class="video-indicator" id="videoIndicator">1 / 2</span>
+            </div>
+            <div class="video-controls">
+              <button class="video-btn" id="videoPrev">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="15 18 9 12 15 6" />
+                </svg>
+              </button>
+              <span class="video-label">tap to navigate</span>
+              <button class="video-btn" id="videoNext">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
       <!-- ─────────────────────────────────────────
      PROGRAMME DIRECTOR
 ──────────────────────────────────────── -->
@@ -337,6 +389,33 @@
 
       tick();
       setInterval(tick, 1000);
+
+      // ── Video toggle ──────────────────────────
+      const videos = document.querySelectorAll(".video-player");
+      const prevBtn = document.getElementById("videoPrev");
+      const nextBtn = document.getElementById("videoNext");
+      const indicator = document.getElementById("videoIndicator");
+      let current = 0;
+
+      function showVideo(index) {
+        videos.forEach((v) => {
+          v.classList.remove("active");
+          v.pause();
+        });
+        videos[index].classList.add("active");
+        indicator.textContent = `${index + 1} / ${videos.length}`;
+        prevBtn.classList.toggle("disabled", index === 0);
+        nextBtn.classList.toggle("disabled", index === videos.length - 1);
+      }
+
+      prevBtn.addEventListener("click", () => {
+        if (current > 0) showVideo(--current);
+      });
+      nextBtn.addEventListener("click", () => {
+        if (current < videos.length - 1) showVideo(++current);
+      });
+
+      showVideo(0);
     </script>
   </body>
 </html>
